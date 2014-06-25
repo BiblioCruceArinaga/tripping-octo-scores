@@ -1,0 +1,23 @@
+Smartscores\Bundle\Entity\User:
+    properties:
+        mail:
+            - NotBlank: ~
+            - Email:
+                message: Dirección de correo inválida
+            - Length:
+                max: 100
+                maxMessage: "La longitud máxima del correo es de {{ limit }} caracteres"
+        name:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 100
+                minMessage: "La longitud mínima del nombre es de {{ limit }} caracteres"
+                maxMessage: "La longitud máxima del nombre es de {{ limit }} caracteres"
+        pass:
+            - NotBlank: ~
+            - Length:
+                min: 5
+                max: 20
+                minMessage: "La longitud mínima de la contraseña es de {{ limit }} caracteres"
+                maxMessage: "La longitud máxima de la contraseña es de {{ limit }} caracteres"

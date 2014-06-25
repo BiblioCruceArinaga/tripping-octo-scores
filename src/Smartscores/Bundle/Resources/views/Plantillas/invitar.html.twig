@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body_content %}
+    {% if errors|length > 0 %}
+        <ul class="alert-error">
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p class="puedes-invitar">{% trans from "invitar" %}Puedes invitar a cinco amigos a que se unan a Scores. ¡Cuantos más consigas que se registren, más saldo extra te llevarás!{% endtrans %}</p>
+    <form method="POST" id="form">
+        <input type="email" name="email1" id="email1" class="form-control textField" placeholder="Email 1"><br>
+        <input type="email" name="email2" id="email2" class="form-control textField" placeholder="Email 2"><br>
+        <input type="email" name="email3" id="email3" class="form-control textField" placeholder="Email 3"><br>
+        <input type="email" name="email4" id="email4" class="form-control textField" placeholder="Email 4"><br>
+        <input type="email" name="email5" id="email5" class="form-control textField" placeholder="Email 5"><br>
+   
+        <p class="pon-aqui">{% trans from "invitar" %}Pon aquí tu nombre de usuario{% endtrans %}</p>
+        <input type="text" name="usuario" class="form-control textField" placeholder="{% trans from "invitar" %}Nombre de usuario{% endtrans %}" required><br>
+        <input type="submit" class="formButton boton-invitar" value="{% trans from "invitar" %}Enviar invitaciones{% endtrans %}">
+    </form>
+
+{% endblock %}

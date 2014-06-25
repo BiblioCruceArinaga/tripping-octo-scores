@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form 'SmartscoresBundle:Plantillas:field_errors.html.twig' %}
+
+{% block body_content %}
+    {% if messages|length > 0 %}
+        <ul class="alert-message">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {{ form_start(form) }}
+        <div class="alert-error">
+            {{ form_errors(form.mail) }}
+            {{ form_errors(form.name) }}
+            {{ form_errors(form.pass) }}
+        </div>
+
+        <p class="crea-cuenta">{% trans from "complete_reg" %}Crea tu cuenta de Rising Scores{% endtrans %}</p>
+
+        {{ form_widget(form.mail, {'attr':{'class':'form-control textField', 'placeholder':'E-Mail'}}) }} <br>
+        {{ form_widget(form.name, {'attr':{'class':'form-control textField', 'placeholder':'Username'}}) }} <br>
+        {{ form_widget(form.pass) }} <br>
+        {{ form_widget(form.Guardar, {'attr':{'class':'formButton'}}) }}
+    {{ form_end(form) }}
+{% endblock %}

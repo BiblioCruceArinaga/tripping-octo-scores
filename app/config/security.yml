@@ -1,0 +1,29 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Smartscores\Bundle\Entity\User: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:  { password: user_pass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: admin_pass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        secured_area:
+            pattern:    ^/catalogue/*
+            #anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+
+    access_control:
+        - { path: ^/catalogue/*, roles: ROLE_NO_ACCESS }

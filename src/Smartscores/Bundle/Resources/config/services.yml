@@ -1,0 +1,7 @@
+parameters:
+#    smartscores.example.class: Smartscores\Bundle\Example
+
+services:
+#    smartscores.example:
+#        class: %smartscores.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

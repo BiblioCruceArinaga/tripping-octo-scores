@@ -1,0 +1,3 @@
+smartscores:
+    resource: "@SmartscoresBundle/Resources/config/routing.yml"
+    prefix:   /

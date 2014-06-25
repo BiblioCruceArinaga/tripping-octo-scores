@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang='es'>
+    <head>
+        <meta http-equiv='Content-type' content='text/html; charset=utf-8' />
+        <meta name='Scores' content='Register Scores'>
+    </head>
+    <body style='background:#DDDDDD; font-family:arial'>
+        <div style="background:#FAFAFA; padding:15px; width:450px; margin:0px auto; margin-top:50px">
+            <img src='http://www.scores.rising.es/img/logo.png' style="width:250px; height:100px"/></br></br>
+            <div style='font-size: 18px'>
+                <p>¡{% trans from "mail_invitation" %}Hola{% endtrans %}!</p>
+                <p>{% trans from "mail_invitation" %}Has recibido una invitación por parte de{% endtrans %} {{ usuario }} {% trans from "mail_invitation" %}para unirte a Scores. Para ello, por favor haz clic en el siguiente enlace.{% endtrans %}</p>
+                <a target='_blank' href='http://www.scores.rising.es/en/aceptar-invitacion/{{ token }}'>{% trans from "mail_invitation" %}Aceptar invitación{% endtrans %}</a></br></br></br>
+                <p>{% trans from "mail_invitation" %}Sólo por aceptar la invitación y crearte una cuenta, recibirás 0,20 créditos adicionales. Puedes encontrar más información{% endtrans %} <a href="http://www.scores.rising.es/en/bonificaciones-de-saldo">{% trans from "mail_invitation" %}aquí{% endtrans %}</a></p>
+            </div>
+            <div>{% trans from "mail_invitation" %}El equipo de Scores{% endtrans %}<br><a href='mailto:info@rising.es'>info@rising.es</a></div>
+        </div>
+    </body>
+</html>

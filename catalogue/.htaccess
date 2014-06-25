@@ -1,0 +1,6 @@
+#Si prohibo las descargas de esta manera lo hago en la aplicación tambien
+#Options -Indexes
+#<Files ~ "\.smts$">  
+#Order Allow,Deny
+#Deny from All
+#</Files>

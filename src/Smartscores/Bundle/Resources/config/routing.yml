@@ -1,0 +1,168 @@
+smartscores_homepage:
+    pattern:  /
+    defaults: { _controller: SmartscoresBundle:Index:index }
+smartscores_homepage_en:
+    pattern:  /en/
+    defaults: { _controller: SmartscoresBundle:Index:index_en, _locale: en }
+    requirements: 
+        _locale: en
+smartscores_register:
+    pattern:  /registro
+    defaults: { _controller: SmartscoresBundle:User:index }
+smartscores_register_en:
+    pattern:  /en/registro
+    defaults: { _controller: SmartscoresBundle:User:index_en, _locale: en }
+    requirements: 
+        _locale: en
+smartscores_register_confirm:
+    pattern:  /confirmar-registro/{token}
+    defaults: { _controller: SmartscoresBundle:User:registerconfirm }
+smartscores_register_confirm_en:
+    pattern:  /en/confirmar-registro/{token}
+    defaults: { _controller: SmartscoresBundle:User:registerconfirm_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_new_password:
+    pattern:  /nueva-clave/{token}
+    defaults: { _controller: SmartscoresBundle:User:newpassword }
+smartscores_new_password_en:
+    pattern:  /en/nueva-clave/{token}
+    defaults: { _controller: SmartscoresBundle:User:newpassword_en, _locale: en }
+    requirements: 
+        _locale: en
+smartscores_password_changed:
+    pattern:  /clave-cambiada
+    defaults: { _controller: SmartscoresBundle:User:passwordchanged }
+smartscores_password_changed_en:
+    pattern:  /en/clave-cambiada
+    defaults: { _controller: SmartscoresBundle:User:passwordchanged_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_aviso_legal:
+    pattern:  /aviso-legal
+    defaults: { _controller: SmartscoresBundle:Index:avisolegal }
+smartscores_aviso_legal_en:
+    pattern:  /en/aviso-legal
+    defaults: { _controller: SmartscoresBundle:Index:avisolegal_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_politica_privacidad:
+    pattern:  /politica-privacidad
+    defaults: { _controller: SmartscoresBundle:Index:politicaprivacidad }
+smartscores_politica_privacidad_en:
+    pattern:  /en/politica-privacidad
+    defaults: { _controller: SmartscoresBundle:Index:politicaprivacidad_en, _locale: en }
+    requirements:
+        _locale: en
+#smartscores_copyright:
+#    pattern:  /copyright
+#    defaults: { _controller: SmartscoresBundle:Index:copyright }
+smartscores_beta_tester:
+    pattern:  /beta-tester
+    defaults: { _controller: SmartscoresBundle:Index:betatester }
+smartscores_bonificaciones_saldo:
+    pattern:  /bonificaciones-de-saldo
+    defaults: { _controller: SmartscoresBundle:Index:bonificaciones }
+smartscores_bonificaciones_saldo_en:
+    pattern:  /en/bonificaciones-de-saldo
+    defaults: { _controller: SmartscoresBundle:Index:bonificaciones_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_invitar:
+    pattern:  /invitar
+    defaults: { _controller: SmartscoresBundle:Index:invitar }
+smartscores_invitar_en:
+    pattern:  /en/invitar
+    defaults: { _controller: SmartscoresBundle:Index:invitar_en, _locale: en }
+    requirements: 
+        _locale: en
+smartscores_aceptar_invitacion:
+    pattern:  /aceptar-invitacion/{token}
+    defaults: { _controller: SmartscoresBundle:Index:aceptarinvitacion }
+smartscores_aceptar_invitacion_en:
+    pattern:  /en/aceptar-invitacion/{token}
+    defaults: { _controller: SmartscoresBundle:Index:aceptarinvitacion_en, _locale: en }
+    requirements:
+        _locale: en
+#smartscores_facebook:
+#    pattern:  /compartir-en-facebook
+#    defaults: { _controller: SmartscoresBundle:Index:facebook }
+#smartscores_facebook_destroy:
+#    pattern:  /cerrar-sesion-facebook
+#    defaults: { _controller: SmartscoresBundle:Index:facebookdestroy }
+
+
+##############################
+# Controladores para tablets #
+##############################
+
+smartscores_mobile_register:
+    pattern:  /registro-mobile
+    defaults: { _controller: SmartscoresBundle:User:indexmobile }
+smartscores_mobile_register:
+    pattern:  /en/registro-mobile
+    defaults: { _controller: SmartscoresBundle:User:indexmobile_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_mobile_login:
+    pattern:  /login-mobile
+    defaults: { _controller: SmartscoresBundle:User:loginmobile }
+smartscores_mobile_forgot_password:
+    pattern:  /recuperar-clave-mobile
+    defaults: { _controller: SmartscoresBundle:User:forgotpassmobile }
+smartscores_mobile_forgot_password:
+    pattern:  /en/recuperar-clave-mobile
+    defaults: { _controller: SmartscoresBundle:User:forgotpassmobile_en, _locale: en }
+    requirements:
+        _locale: en
+smartscores_mobile_facebook_register:
+    pattern:  /login-facebook-mobile
+    defaults: { _controller: SmartscoresBundle:User:loginfacebookmobile }
+smartscores_mobile_delete_account:
+    pattern:  /eliminar-cuenta-mobile
+    defaults: { _controller: SmartscoresBundle:User:eliminarcuentamobile }
+smartscores_mobile_change_password:
+    pattern:  /cambiar-clave-mobile
+    defaults: { _controller: SmartscoresBundle:User:cambiarclavemobile }
+smartscores_mobile_send_feedback:
+    pattern:  /enviar-feedback-mobile
+    defaults: { _controller: SmartscoresBundle:Index:enviarfeedbackmobile }
+
+smartscores_info_user:
+    pattern:  /user-info
+    defaults: { _controller: SmartscoresBundle:User:getuserinfo }
+smartscores_store_piano:
+    pattern:  /store-piano
+    defaults: { _controller: SmartscoresBundle:Store:getpianoinfo }
+smartscores_store_guitar:
+    pattern:  /store-guitar
+    defaults: { _controller: SmartscoresBundle:Store:getguitarinfo }
+smartscores_store_free:
+    pattern:  /store-free
+    defaults: { _controller: SmartscoresBundle:Store:getfreeinfo }
+smartscores_store_search:
+    pattern:  /store-search
+    defaults: { _controller: SmartscoresBundle:Store:search }
+smartscores_store_buy:
+    pattern:  /store-buyscore
+    defaults: { _controller: SmartscoresBundle:Store:buyscore }
+smartscores_store_buyit:
+    pattern:  /store-infobuy
+    defaults: { _controller: SmartscoresBundle:Store:buyit }
+smartscores_store_buymoney:
+    pattern: /store-buymoney
+    defaults: { _controller: SmartscoresBundle:Store:buymoney}
+smartscores_mobile_invitar:
+    pattern:  /invitar_mobile
+    defaults: { _controller: SmartscoresBundle:Index:invitar_mobile }
+smartscores_mobile_invitar_en:
+    pattern:  /en/invitar_mobile
+    defaults: { _controller: SmartscoresBundle:Index:invitar_mobile_en, _locale: en }
+    requirements: 
+        _locale: en
+smartscores_store_social_bonification:
+    pattern: /store-bonification-social
+    defaults: { _controller: SmartscoresBundle:Store:bonification_social}
+smartscores_purchases:
+    pattern: /purchases
+    defaults: { _controller: SmartscoresBundle:Store:purchases}

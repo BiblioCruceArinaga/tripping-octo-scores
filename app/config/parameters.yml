@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: db504722270.db.1and1.com
+    database_port: null
+    database_name: db504722270
+    database_user: dbo504722270
+    database_password: Musicaeverywhere_2014
+    mailer_transport: mail
+    mailer_encryption: tls
+    mailer_host: smtp.1and1.es
+    mailer_user: info@rising.es
+    mailer_password: Rising_2014
+    locale: es
+    secret: mypersonaltoken

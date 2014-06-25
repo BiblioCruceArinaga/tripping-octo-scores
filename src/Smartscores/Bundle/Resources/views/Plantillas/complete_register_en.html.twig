@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta http-equiv='Content-type' content='text/html; charset=utf-8' />
+        <meta name='Scores' content='Registro Scores'>
+    </head>
+    <body style='background:#DDDDDD; font-family:arial'>
+        <div style='background:#FAFAFA; padding:15px; width:450px; margin:0px auto; margin-top:50px'>
+            <img src='http://www.scores.rising.es/img/logo.png' style='width:150px; height:69px'/>
+            <div style='font-size: 18px'>
+                <p>{% trans from "complete_reg" %}Estimad@ usuari@{% endtrans %}: </p>
+                <p>{% trans from "complete_reg" %}Este correo electrónico ha sido enviado automáticamente desde Scores. Si has recibido este mensaje es porque deseas registrarte en Scores. Para completar el proceso de registro, por favor haz clic en el siguiente enlace.{% endtrans %}</p>
+                <a target='_blank' href='http://www.scores.rising.es/en/confirmar-registro/{{ token }}'>http://www.scores.rising.es/en/confirmar-registro/{{ token }}</a>
+                <p>{% trans from "complete_reg" %}Si no has solicitado el alta en Scores, por favor, ignora este correo electrónico.{% endtrans %}</p>
+            </div>
+            <div>{% trans from "complete_reg" %}El equipo de Scores{% endtrans %}<br><a href='mailto:info@scores.rising.es'>info@scores.rising.es</a></div>
+        </div>
+    </body>
+</html>
+
