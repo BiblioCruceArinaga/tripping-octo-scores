@@ -265,9 +265,13 @@
 
                 return new Response();
 	}
+<<<<<<< HEAD
 	
 	//Método que devuelve una lista con las Id de las partituras que han sido compradas.
+=======
 
+
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 	public function buyitAction(Request $request){
 		$buy = new BuyScores();
             	
@@ -289,19 +293,25 @@
                 return new Response();
 	}
 
-
+<<<<<<< HEAD
 	//Método que registra la compra de saldo
+=======
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 	public function buymoneyAction(Request $request){
 
 		$Id_U = $request->request->get('id_u',"");
             	$PayMethod = $request->request->get('paymethod',"");
            	$Money = $request->request->get('money',"");
-
+<<<<<<< HEAD
 		$Date = date('Ymd');	
 		$Language = utf8_decode($request->request->get('Lenguaje'));
 
 		$Region = $request->getLocale();
 
+=======
+		$Date = date('Ymd');
+		
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 		$BuyM = new BuyMoney();
 
                 $BuyM->setId_U($Id_U);
@@ -317,6 +327,7 @@
 			if($Money > 5){			
 				$this->bonificationMoney($Id_U, $Money);			
 			}
+<<<<<<< HEAD
 			
 			if(strcasecmp($Language, utf8_decode('"español"')) != 0){
 				$res = $this->sendMail('Billing Scores', 'billing@scores.rising.es', $Id_U, 'Purchase of '.$Money.' credits', $Money, $Date, $Language, $Region);
@@ -337,7 +348,12 @@
                    			echo json_encode($resultado);
 				} 
        			}
-
+=======
+                        
+			$resultado[] = array("buyMstatus" => "1");
+                   	echo json_encode($resultado);
+             	
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 		}catch (\Exception $e) {
                         $resultado[] = array("buyMstatus" => "2");
                         echo json_encode($resultado);
@@ -348,8 +364,12 @@
 		
                	return new Response();	
 	}
+<<<<<<< HEAD
 	
 	//Método que añade la bonificación al usuario que compra dinero
+=======
+
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 	public function bonificationMoney($id_u, $money){
 
 		$Date = date('Ymd');
@@ -396,8 +416,12 @@
 
                	return new Response();	
 	}
+<<<<<<< HEAD
 	
 	//Método que añade la bonificación al usuario que comprata en las redes
+=======
+
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 	public function bonification_socialAction(Request $request){
 
 
@@ -430,7 +454,10 @@
                	return new Response();	
 	}
 
+<<<<<<< HEAD
 	//Método que devuelve las partituras que ha comprado el usuario
+=======
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 	public function purchasesAction(Request $request){
 					
 		$score = new Scores();
@@ -439,7 +466,11 @@
 		$normalizer = new GetSetMethodNormalizer();
 		$serializer = new Serializer(array($normalizer), array($encoder));
 		
+<<<<<<< HEAD
 		$Language = utf8_encode($request->request->get('Lenguaje'));	
+=======
+		$Language = $request->request->get('Lenguaje');	
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 		$Id_U = $request->request->get('Id_U');
 		
 		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
@@ -473,6 +504,7 @@
 		return new Response();		
 	}
 
+<<<<<<< HEAD
 	//Método al que se le pasan los datos necesarios y este envia un correo
 	public function sendMail($subject, $mailfrom, $mailto, $Product, $Money, $Date, $Language, $Region){
 
@@ -589,6 +621,9 @@
 			return $day." de ".$mes." de ".$year;
 		}
 	}
+
+=======
+>>>>>>> b5d362eec50b08d730174b13cae9105454d7e0b9
 
     }
 
