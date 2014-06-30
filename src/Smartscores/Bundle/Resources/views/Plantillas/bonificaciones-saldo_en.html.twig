@@ -1,0 +1,45 @@
+{% extends '::base-en.html.twig' %}
+
+{% block body_content %}
+
+    <div class="img-responsive bonificaciones">
+        {% trans from "bonificaciones" %}A continuación puedes ver un listado de todas las maneras posibles de recibir saldo extra, que podrás utilizar para conseguir nuevas partituras a través de nuestra tienda. Podrás hacer todas estas acciones desde la propia aplicación{% endtrans %}:
+
+        <ul>
+            <li><strong>{% trans from "bonificaciones" %}Crear una cuenta.{% endtrans %}</strong> {% trans from "bonificaciones" %}Sólo por crearte una cuenta de Scores recibirás 0,20 de saldo adicional. Así de sencillo.{% endtrans %}</li>
+            <li><strong>{% trans from "bonificaciones" %}Invitar a amigos.{% endtrans %}</strong> {% trans from "bonificaciones" %}Envíale a tus amigos un link de invitación para que se creen una cuenta en Scores. Si consigues que se registren, ellos se llevan 0,20 de saldo por crear la cuenta y tú te llevas 0,15 de saldo por cada amigo que se haya registrado gracias a ti.{% endtrans %}</li>
+            <li><strong>{% trans from "bonificaciones" %}Redes sociales.{% endtrans %}</strong> {% trans from "bonificaciones" %}Habla de nosotros en Facebook y Twitter. Por cada post o tweet que publiques recibirás 0,05 de saldo.{% endtrans %} </li>
+            <li><strong>{% trans from "bonificaciones" %}Compartir una partitura.{% endtrans %}</strong> {% trans from "bonificaciones" %}Desde Scores podrás acceder a nuestra tienda y navegar por el catálogo de partituras que te ofrecemos. Si accedes a la página de información de una partitura y la compartes en Facebook o Twitter, recibirás 0,02 de saldo por cada partitura compartida.{% endtrans %} </li>
+            <li><strong>{% trans from "bonificaciones" %}Comprar partituras.{% endtrans %}</strong> {% trans from "bonificaciones" %}Comprar partituras en nuestra tienda tiene premio. Recibirás 0,01 de saldo por cada partitura adquirida.{% endtrans %}</li>
+            <li><strong>{% trans from "bonificaciones" %}Añadir saldo a tu cuenta.{% endtrans %}</strong> {% trans from "bonificaciones" %}Por último, aunque no por ello menos importante, cada vez que añadas saldo a tu cuenta recibirás un pequeño extra. En la siguiente tabla podrás ver las cantidades que te ofrecemos{% endtrans %}:</li>
+        </ul>
+
+        <table>
+            <tr>
+                <td>{% trans from "bonificaciones" %}Saldo{% endtrans %}</td>
+                <td>{% trans from "bonificaciones" %}Regalo{% endtrans %}</td>
+            </tr>
+            <tr>
+                <td>5 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+                <td>0 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+            </tr>
+            <tr>
+                <td>10 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+                <td>1 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+            </tr>
+            <tr>
+                <td>20 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+                <td>2 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+            </tr>
+            <tr>
+                <td>50 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+                <td>5 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+            </tr>
+            <tr>
+                <td>100 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+                <td>10 {% trans from "bonificaciones" %}de saldo{% endtrans %}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}

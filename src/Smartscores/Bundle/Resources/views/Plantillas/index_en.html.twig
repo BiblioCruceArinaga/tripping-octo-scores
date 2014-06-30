@@ -1,0 +1,98 @@
+{% extends '::base-en.html.twig' %}
+
+{% block body_content %}
+    <div class="img-responsive presentacion">
+        <div class="img-responsive tablet">
+            <img src="{{ asset('/img/tablet.png') }}" class="img-responsive" />
+        </div>
+        <div class="img-responsive textandlink">
+
+            <!-- Text -->
+            <h1 class="nextgeneration">{% trans from "index" %}La siguiente generación de partituras{% endtrans %}</h1>
+
+            <!-- Google Play link -->
+            <div class="img-responsive cuadro-link-google">
+                <p class="mensaje">{% trans from "index" %}Descárgala ya para Android{% endtrans %}</p>
+                <a href="https://play.google.com/store/apps/details?id=com.rising.drawing">
+                  <img alt="Get it on Google Play"
+                       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" 
+                        class="img-responsive"/>
+                </a>
+            </div>
+
+            <!-- Botón registro -->
+            <div class="distribuir">
+                <input type="submit" class="btn img-responsive boton" value="{% trans from "index" %}Registrarme{% endtrans %}">
+            </div>
+        </div>
+    </div>
+
+    <div class="img-responsive caracteristicas" id="cara">
+        <div class="img-responsive caracteristica">
+            <div class="imagen-izq">
+                <img src="{{ asset('/img/caracteristica-partitura.jpg') }}" class="img-responsive imagen" />
+            </div>
+            <div class="texto-izq">
+                <label class="texto">{% trans from "index" %}La partitura cambia de página cuando lo necesitas{% endtrans %}</label>
+            </div>
+        </div>
+        <div class="img-responsive caracteristica">
+            <div class="texto-der">
+                <label class="texto">{% trans from "index" %}Lleva todas tus partituras en un único dispositivo{% endtrans %}</label>
+            </div>
+            <div class="imagen-der">
+                <img src="{{ asset('/img/caracteristica-tablet.jpg') }}" class="img-responsive imagen" />
+            </div>
+        </div>
+        <div class="img-responsive caracteristica">
+            <div class="imagen-izq">
+                <img src="{{ asset('/img/caracteristica-catalogo.png') }}" class="img-responsive imagen" />
+            </div>
+            <div class="texto-izq">
+                <label class="texto">{% trans from "index" %}Catálogo de partituras en constante expansión{% endtrans %}</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-responsive contacto">
+        <p class="mensaje">{% trans from "index" %}Contacta con nosotros{% endtrans %}</p>
+        <div class="img-responsive formulario-y-flecha">
+            <form class="navbar-form" method="POST">
+                <input type="text" name="name" class="form-control margen-inf" placeholder="{% trans from "index" %}Nombre{% endtrans %}" required>
+                <input type="email" name="email" class="form-control margen-inf" placeholder="{% trans from "index" %}Correo electrónico{% endtrans %}" required>
+                <textarea class="form-control margen-inf" rows="3" name="message" required></textarea>
+                <button type="submit" class="btn formButton margen-inf" id="form">{% trans from "index" %}Enviar mensaje{% endtrans %}</button>
+            </form>
+
+            <img src="{{ asset('/img/arrow.png') }}" class="arrow" id="arrow" />
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script type="text/javascript">
+
+        //  Smooth animation for links
+        $('a').click(function(){
+            $('html, body').animate({
+                scrollTop: $( $.attr(this, 'href') ).offset().top
+            }, 500);
+            return false;
+        });
+
+        //  Go to the top of the page
+        $("#arrow").click(function(){
+            $('html, body').animate({
+                scrollTop: $("#menu-top").offset().top
+            }, 500);
+        });
+
+        $(".boton").click(function(){
+            window.location.href = "http://scores.rising.es/en/registro";
+        });
+    </script>
+{% endblock %}

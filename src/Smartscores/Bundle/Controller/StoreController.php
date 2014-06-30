@@ -1,0 +1,588 @@
+<?php
+
+    namespace Smartscores\Bundle\Controller;
+
+    use Symfony\Component\HttpFoundation\Response;
+    use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\Serializer\Serializer;
+    use Symfony\Component\Serializer\Encoder\JsonEncoder;
+    use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+    use Smartscores\Bundle\Entity\BuyScores;
+    use Smartscores\Bundle\Entity\User;
+    use Smartscores\Bundle\Entity\Scores;
+    use Smartscores\Bundle\Entity\Spanish;
+    use Smartscores\Bundle\Entity\English;
+    use Smartscores\Bundle\Entity\BuyMoney;
+    use Smartscores\Bundle\Entity\BonificacionesUsers;
+
+    class StoreController extends Controller {
+
+
+			/*
+
+			====================================================
+			Espacio reservado para el código de la tienda online
+			====================================================
+ 
+			*/
+
+
+
+
+/*
+			==============================================
+			   Código tienda para dispositivos móviles
+			==============================================
+*/
+	
+	//Devuelve las partituras de piano
+	public function getpianoinfoAction(Request $request){		
+						
+		$score = new Scores();
+		$spanish = new Spanish();
+    		$english = new English();
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+
+		$Language = utf8_encode($request->request->get('Lenguaje'));	
+		
+		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
+		if(strcasecmp($Language, 'español') != 0){
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT e.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, e.Description, e.Name_Song, e.instrument, e.URL, 					e.URL_Image 
+				FROM SmartscoresBundle:English e JOIN SmartscoresBundle:Scores sc 
+				WHERE e.Id_S = sc.Id_S AND e.instrument = 'Piano'" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+		}else{
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT s.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, s.Description, s.Name_Song, s.instrument, s.URL, 					s.URL_Image 
+				FROM SmartscoresBundle:Spanish s JOIN SmartscoresBundle:Scores sc 
+				WHERE s.Id_S = sc.Id_S AND s.instrument = 'Piano'" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+
+							
+		}
+		return new Response();
+	}
+
+	//Devuelve las partituras de guitarra
+	public function getguitarinfoAction(Request $request){						
+		$score = new Scores();
+		$spanish = new Spanish();
+		$english = new English();
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+		$Language = utf8_encode($request->request->get('Lenguaje'));	
+
+		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
+		if(strcasecmp($Language, 'español') != 0){
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT e.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, e.Description, e.Name_Song, e.instrument, e.URL, 					e.URL_Image 
+				FROM SmartscoresBundle:English e JOIN SmartscoresBundle:Scores sc 
+				WHERE e.Id_S = sc.Id_S AND e.instrument = 'Guitar'" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+			
+		}else{
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT s.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, s.Description, s.Name_Song, s.instrument, s.URL, 					s.URL_Image 
+				FROM SmartscoresBundle:Spanish s JOIN SmartscoresBundle:Scores sc 
+				WHERE s.Id_S = sc.Id_S AND s.instrument = 'Guitarra'" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+	
+		}
+		return new Response();
+	}
+
+	//Devuelve las partituras gratuitas
+	public function getfreeinfoAction(Request $request){		
+						
+		$score = new Scores();
+		$spanish = new Spanish();
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+
+		$Language = utf8_encode($request->request->get('Lenguaje'));	
+		
+		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
+		if(strcasecmp($Language, 'español') != 0){
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT e.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, e.Description, e.Name_Song, e.instrument, e.URL, 					e.URL_Image 
+				FROM SmartscoresBundle:English e JOIN SmartscoresBundle:Scores sc 
+				WHERE e.Id_S = sc.Id_S AND sc.Price = 0" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+			
+		}else{
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT s.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, s.Description, s.Name_Song, s.instrument, s.URL, 					s.URL_Image 
+				FROM SmartscoresBundle:Spanish s JOIN SmartscoresBundle:Scores sc 
+				WHERE s.Id_S = sc.Id_S AND sc.Price = 0" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;	
+		}
+		return new Response();
+	}
+
+	//Devuelve los datos de las partituras que coincidan en nombre, autor o editorial con el fragmento que se le pasa (Buscador)
+	public function searchAction(Request $request){
+					
+		$score = new Scores();
+		$spanish = new Spanish();
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+
+		$Language = utf8_encode($request->request->get('Lenguaje'));	
+		$Word = $request->request->get('word');
+		
+		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
+		if(strcasecmp($Language, 'español') != 0){
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT e.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, e.Description, e.Name_Song, e.instrument, e.URL, 					e.URL_Image
+				FROM SmartscoresBundle:English e JOIN SmartscoresBundle:Scores sc 
+				WHERE e.Id_S = sc.Id_S AND (sc.Author LIKE '%$Word%' OR sc.Editor LIKE '%$Word%' OR e.Name_Song LIKE '%$Word%')" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+
+		}else{
+			
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT s.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, s.Description, s.Name_Song, s.instrument, s.URL, 					s.URL_Image 
+				FROM SmartscoresBundle:Spanish s JOIN SmartscoresBundle:Scores sc 
+				WHERE s.Id_S = sc.Id_S AND (sc.Author LIKE '%$Word%' OR sc.Editor LIKE '%$Word%' OR s.Name_Song LIKE '%$Word%')" 
+			);
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+				
+		}
+		return new Response();		
+	}
+
+	//Método que registra la compra de partituras
+	public function buyscoreAction(Request $request){
+		$buy = new BuyScores();
+            
+            	//  El método request devuelve variables $_POST (el método query devuelve $_GET)
+            	$Id_U = $request->request->get('id_u');
+            	$Id_S = $request->request->get('id_s');
+
+		$Date = date('Ymd');	
+		$Language = utf8_decode($request->request->get('Lenguaje'));
+	
+		$em = $this->getDoctrine()->getManager();
+
+		if(strcasecmp($Language, utf8_decode('"español"')) != 0){
+			$query_p = $em -> createQuery("SELECT e.Name_Song FROM SmartscoresBundle:English e WHERE e.Id_S = '$Id_S'");
+		}else{
+			$query_p = $em -> createQuery("SELECT s.Name_Song FROM SmartscoresBundle:Spanish s WHERE s.Id_S = '$Id_S'");
+		}
+
+		$query_m = $em -> createQuery("SELECT s.Price FROM SmartscoresBundle:Scores s WHERE s.Id_S = '$Id_S'");
+		$Product = $query_p->getResult();
+           	$Money = $query_m->getResult();
+
+		$buy->setId_U($Id_U);
+		$buy->setId_S($Id_S);	
+	
+	
+		try {
+                	$um = $this->getDoctrine()->getManager();
+                    	$um->persist($buy);
+                    	$um->flush();
+		
+			if(strcasecmp($Language, utf8_decode('"español"')) != 0){
+				$res = $this->sendMail('Billing Scores', 'billing@scores.rising.es', $Id_U, 'Purchase of "'.$Product[0]['Name_Song'].'" ', $Money[0]['Price'], $Date, $Language, $Region);
+				if($res){  
+					$resultado[] = array("buystatus" => "1");
+		           		echo json_encode($resultado);
+	     			}else{
+					$resultado[] = array("buystatus" => "10");
+		           		echo json_encode($resultado);
+				} 
+			}else{
+				$res = $this->sendMail('Recibo Scores', 'billing@scores.rising.es', $Id_U, 'Compra de "'.$Product[0]['Name_Song'].'" ', $Money[0]['Price'], $Date, $Language, $Region);
+				if($res){    
+					$resultado[] = array("buystatus" => "1");
+                   			echo json_encode($resultado);
+     				}else{
+					$resultado[] = array("buystatus" => "10");
+                   			echo json_encode($resultado);
+				} 
+       			}
+
+                }catch (\Exception $e) {
+                    
+                    	//  Excepción SQL
+                       	echo $e->getMessage();
+                        $resultado[] = array("buystatus" => "0");
+                        echo json_encode($resultado);
+          		
+		}
+
+                return new Response();
+	}
+	
+	//Método que devuelve una lista con las Id de las partituras que han sido compradas.
+	public function buyitAction(Request $request){
+		$buy = new BuyScores();
+            	
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+            	$Id_U = $request->request->get('id_u');
+
+		$em = $this->getDoctrine()->getManager();
+		$query = $em -> createQuery("
+			SELECT bs.Id_S
+			FROM SmartscoresBundle:BuyScores bs 
+			WHERE bs.Id_U = '$Id_U'" 
+		);
+		$Score2 = $query->getResult();
+		$jsonContent = $serializer->serialize($Score2, 'json');
+		echo $jsonContent;
+                return new Response();
+	}
+
+	//Método que registra la compra de saldo
+	public function buymoneyAction(Request $request){
+
+		$Id_U = $request->request->get('id_u',"");
+            	$PayMethod = $request->request->get('paymethod',"");
+           	$Money = $request->request->get('money',"");
+		$Date = date('Ymd');	
+		$Language = utf8_decode($request->request->get('Lenguaje'));
+
+		$Region = $request->getLocale();
+
+		$BuyM = new BuyMoney();
+
+                $BuyM->setId_U($Id_U);
+                $BuyM->setDate($Date);
+                $BuyM->setPay_Method($PayMethod);
+                $BuyM->setMoney($Money);
+
+                try {
+                	$um = $this->getDoctrine()->getManager();
+                        $um->persist($BuyM);
+                        $um->flush();
+			
+			if($Money > 5){			
+				$this->bonificationMoney($Id_U, $Money);			
+			}
+			
+			if(strcasecmp($Language, utf8_decode('"español"')) != 0){
+				$res = $this->sendMail('Billing Scores', 'billing@scores.rising.es', $Id_U, 'Purchase of '.$Money.' credits', $Money, $Date, $Language, $Region);
+				if($res){  
+					$resultado[] = array("buyMstatus" => "1");
+		           		echo json_encode($resultado);
+	     			}else{
+					$resultado[] = array("buyMstatus" => "10");
+		           		echo json_encode($resultado);
+				} 
+			}else{
+				$res = $this->sendMail('Recibo Scores', 'billing@scores.rising.es', $Id_U, 'Compra de '.$Money.' creditos', $Money, $Date, $Language, $Region);
+				if($res){    
+					$resultado[] = array("buyMstatus" => "1");
+                   			echo json_encode($resultado);
+     				}else{
+					$resultado[] = array("buyMstatus" => "10");
+                   			echo json_encode($resultado);
+				} 
+       			}
+		}catch (\Exception $e) {
+                        $resultado[] = array("buyMstatus" => "2");
+                        echo json_encode($resultado);
+
+                        //echo $e->getMessage();
+                        return new Response();
+                }
+		
+               	return new Response();	
+	}
+	
+	//Método que añade la bonificación al usuario que compra dinero
+	public function bonificationMoney($id_u, $money){
+
+		$Date = date('Ymd');
+		$BonificationID = 0;
+		
+		switch($money){
+			case 10: 
+				$BonificationID = 7;	
+				break;
+			case 20: 
+				$BonificationID = 8;
+				break;
+			case 50: 
+				$BonificationID = 9;
+				break;
+			case 100:  
+				$BonificationID = 10;
+				break;
+			default:
+				$BonificationID = 0;
+		}
+
+		$BonUsers = new BonificacionesUsers();
+
+                $BonUsers->setIdUser($id_u);
+                $BonUsers->setIdBonificacion($BonificationID);
+                $BonUsers->setFecha($Date);
+
+                try {
+                	$um = $this->getDoctrine()->getManager();
+                        $um->persist($BonUsers);
+                        $um->flush();
+
+                        $resultado[] = array("bonUstatus" => "1");
+                   	echo json_encode($resultado);
+             	
+		}catch (\Exception $e) {
+                        $resultado[] = array("bonUstatus" => "2");
+                        echo json_encode($resultado);
+
+                        //echo $e->getMessage();
+                        return new Response();
+                }
+
+               	return new Response();	
+	}
+	
+	//Método que añade la bonificación al usuario que comprata en las redes
+	public function bonification_socialAction(Request $request){
+
+
+		$Id_U = $request->request->get('id_u',"");
+            	$Id_B = $request->request->get('id_b',"");
+		$Date = date('Ymd');
+		
+		$BonUsers = new BonificacionesUsers();
+
+                $BonUsers->setIdUser($Id_U);
+                $BonUsers->setIdBonificacion($Id_B);
+                $BonUsers->setFecha($Date);
+
+                try {
+                	$um = $this->getDoctrine()->getManager();
+                        $um->persist($BonUsers);
+                        $um->flush();
+
+                        $resultado[] = array("bonificationstatus" => "1");
+                   	echo json_encode($resultado);
+             	
+		}catch (\Exception $e) {
+                        $resultado[] = array("bonificationstatus" => "2");
+                        echo json_encode($resultado);
+
+                        //echo $e->getMessage();
+                        return new Response();
+                }
+
+               	return new Response();	
+	}
+
+	//Método que devuelve las partituras que ha comprado el usuario
+	public function purchasesAction(Request $request){
+					
+		$score = new Scores();
+		$spanish = new Spanish();
+		$encoder = new JsonEncoder();
+		$normalizer = new GetSetMethodNormalizer();
+		$serializer = new Serializer(array($normalizer), array($encoder));
+		
+		$Language = utf8_encode($request->request->get('Lenguaje'));	
+		$Id_U = $request->request->get('Id_U');
+		
+		//Si el dispositivo está en español devuelve partituras en ese idioma, sino, en inglés. 
+		if(strcasecmp($Language, 'español') != 0){
+
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT e.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, e.Description, e.Name_Song, e.instrument, e.URL, 					e.URL_Image
+				FROM SmartscoresBundle:English e JOIN SmartscoresBundle:Scores sc WITH e.Id_S = sc.Id_S JOIN 					SmartscoresBundle:BuyScores bs WITH sc.Id_S = bs.Id_S
+				WHERE bs.Id_U = $Id_U"
+			);
+
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+
+		}else{
+			
+			$em = $this->getDoctrine()->getManager();
+			$query = $em -> createQuery("
+				SELECT s.Id_S, sc.Author, sc.Price, sc.Year, sc.Editor, s.Description, s.Name_Song, s.instrument, s.URL, 					s.URL_Image 
+				FROM SmartscoresBundle:Spanish s JOIN SmartscoresBundle:Scores sc WITH s.Id_S = sc.Id_S JOIN 					SmartscoresBundle:BuyScores bs WITH sc.Id_S = bs.Id_S
+				WHERE bs.Id_U = $Id_U"
+			);
+
+			$Score2 = $query->getResult();
+			$jsonContent = $serializer->serialize($Score2, 'json');
+			echo $jsonContent;
+				
+		}
+		return new Response();		
+	}
+
+	//Método al que se le pasan los datos necesarios y este envia un correo
+	public function sendMail($subject, $mailfrom, $mailto, $Product, $Money, $Date, $Language, $Region){
+
+		$em = $this->getDoctrine()->getManager();
+		$query = $em -> createQuery("SELECT u.mail FROM SmartscoresBundle:User u WHERE u.id_u = $mailto");
+		$fecha = $this->convertDate($Date, $Language);
+		$user_mail = $query->getResult();
+
+/*Dejo pendiente lo de las monedas
+		$dinero = $Money;
+		setlocale(LC_MONETARY, 'es_ES');
+*/
+		try{
+			if(strcasecmp($Language, utf8_decode('"español"')) != 0){
+				$message = \Swift_Message::newInstance()
+					->setSubject($subject)
+				        ->setFrom($mailfrom)
+				        ->setTo($user_mail[0]['mail'])
+					->addPart($this->renderView('SmartscoresBundle:Plantillas:billing_mail_en.html.twig', array('producto' => $Product, 'precio' => $Money, 'date' => $fecha)), 'text/html');
+			}else{
+				$message = \Swift_Message::newInstance()
+					->setSubject($subject)
+				        ->setFrom($mailfrom)
+				        ->setTo($user_mail[0]['mail'])
+					->addPart($this->renderView('SmartscoresBundle:Plantillas:billing_mail.html.twig', array('producto' => $Product, 'precio' => $Money, 'date' => $fecha)), 'text/html');			
+			}	
+			//  El correo se envió bien
+                   	if ($this->get('mailer')->send($message) !== false) {
+                                //$resultado[]=array("mailstatus"=>"1");
+                                //echo json_encode($resultado);
+				return true;
+                   	}
+
+                        //  El correo no se pudo enviar
+                        else {
+                        	//$resultado[]=array("mailstatus"=>"4");
+                                //echo json_encode($resultado);
+			return false;
+                       	}
+		} catch (\Exception $e) {
+                	$resultado[] = array("mailstatus"=>"-1");
+                        echo json_encode($resultado);
+
+                        echo $e->getMessage();
+                        return new Response();
+                }       
+	}
+
+	public function convertDate($Date, $Language){
+
+		$year= substr($Date, 0, 4); 
+		$month= substr($Date, 4, 2);
+		$day= substr($Date, 6, 2);
+
+		if(strcasecmp($Language, utf8_decode('"español"')) != 0){
+
+			switch($month){
+				case "01": $mes = "January";
+				break;
+				case "02": $mes = "February";
+				break;
+				case "03": $mes = "March";
+				break;
+				case "04": $mes = "April";
+				break;
+				case "05": $mes = "May";
+				break;
+				case "06": $mes = "June";
+				break;
+				case "07": $mes = "July";
+				break;
+				case "08": $mes = "August";
+				break;
+				case "09": $mes = "September";
+				break;
+				case "10": $mes = "October";
+				break;
+				case "11": $mes = "November";
+				break;
+				case "12": $mes = "December";
+				break;
+			}
+
+			return $day.", ".$mes." of ".$year;
+		}else{
+
+			switch($month){
+				case "01": $mes = "Enero";
+				break;
+				case "02": $mes = "Febero";
+				break;
+				case "03": $mes = "Marzo";
+				break;
+				case "04": $mes = "Abril";
+				break;
+				case "05": $mes = "Mayo";
+				break;
+				case "06": $mes = "Junio";
+				break;
+				case "07": $mes = "Julio";
+				break;
+				case "08": $mes = "Agosto";
+				break;
+				case "09": $mes = "Septiembre";
+				break;
+				case "10": $mes = "Octubre";
+				break;
+				case "11": $mes = "Noviembre";
+				break;
+				case "12": $mes = "Diciembre";
+				break;
+			}
+	
+			return $day." de ".$mes." de ".$year;
+		}
+	}
+
+
+    }
+
+?>

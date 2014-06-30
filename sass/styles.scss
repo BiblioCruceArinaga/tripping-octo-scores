@@ -1,0 +1,312 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+/* Variables */
+$blancoCasiTotal: #EEEEEE;
+$negroClarito: #333333;
+
+/* Custom HTML */
+html {font-family: arial, verdana, sans-serif; color:$negroClarito}
+body {
+    background-image:url('../img/score.jpg'); 
+    background-size:100% 100%; 
+    background-attachment: fixed; 
+}
+li { padding-top:36px; padding-bottom:35px }
+li.active {background:#e7e7e7}
+a { font-size:16px }
+strong {font-weight:bold}
+
+/* CSS genérico */
+.margen-inf { margin-bottom:20px }
+.alert-error { color: #B94A48; background-color: #f2dede; border-color: #eed3d7; margin-bottom:30px }
+.alert-message { color: #97AD0A; background-color: #F1FAB4; border-color: #eed3d7; margin-bottom:30px }
+.alert-success { color: #468847; background-color: #dff0d8; border-color: #d6e9c6; margin-bottom:0px }
+
+/* Formularios */
+//.textField { padding:10px; border:1px solid #CCCCCC; border-radius:5px; color:#555555; margin-bottom:15px }
+.textField { width:300px }
+.formButton { background: $negroClarito; border-radius:4px; border:1px solid $negroClarito; color:$blancoCasiTotal; padding:10px }
+.formButton:hover {color:$blancoCasiTotal}
+.fieldError { padding:10px }
+
+/* Menú superior */
+.menu-top { height:123px }
+.logo { margin-left:50px }
+
+.cuerpo { 
+    max-width:100%; 
+    height:auto; 
+}
+
+/* Imagen de la partitura para el fondo de la web */
+.fondoweb { 
+    height:auto;
+    padding-top:30px; 
+    padding-bottom:30px 
+}
+
+/* Recuadro gris de fondo */
+.recuadro_gris { 
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0.5, #EBEBEB),
+        color-stop(1, #FFFFFF)
+    );
+    background-image: -o-linear-gradient(bottom, #EBEBEB 50%, #FFFFFF 100%);
+    background-image: -moz-linear-gradient(bottom, #EBEBEB 50%, #FFFFFF 100%);
+    background-image: -webkit-linear-gradient(bottom, #EBEBEB 50%, #FFFFFF 100%);
+    background-image: -ms-linear-gradient(bottom, #EBEBEB 50%, #FFFFFF 100%);
+    background-image: linear-gradient(to bottom, #EBEBEB 50%, #FFFFFF 100%);
+    width:960px; 
+    min-height:30px;
+    padding-top:30px;
+    padding-bottom:30px;
+    overflow:hidden
+}
+
+/* Bloque 1: eslogan y link */
+.presentacion { 
+    min-width:100%; 
+    height:auto; 
+    margin:0px auto; 
+    float:right;
+
+    .tablet {
+        width:49%;
+        height:auto;
+        display:inline-block; 
+        vertical-align:middle;
+    }
+
+    .textandlink { 
+        width:49%; 
+        height:auto; 
+        display:inline-block; 
+        vertical-align:middle;
+
+        .nextgeneration { 
+            margin-bottom:40px; 
+            font-size:35px 
+        }
+
+        .cuadro-link-google { 
+            background:#CCCCCC; 
+            border-radius:10px; 
+            padding:10px;
+            padding-top:15px;
+            padding-bottom:15px;
+            width:78%;
+            margin-bottom:20px;
+
+            .mensaje { 
+                color:$negroClarito; 
+                font-size:20px;
+                margin-bottom:20px 
+            }
+        }
+
+        .distribuir {
+            width:100%;
+            margin-bottom:10px;
+
+            .boton { 
+                background:#152BBD; 
+                border-radius:4px; 
+                border:1px solid #152BBD; 
+                color:$blancoCasiTotal; 
+                padding:10px; 
+                width:78%; 
+                white-space:normal 
+            }
+        }
+    }
+}
+
+/* Bloque 2: características */
+.caracteristicas { 
+    min-width:100%; 
+    height:auto; 
+    margin:0px auto; 
+    margin-top:20px; 
+    padding:20px; 
+    float:right; 
+    background:#CFCFCF;
+
+    .caracteristica { 
+        min-width:100%; 
+        float:left; 
+        margin-bottom:30px; 
+
+        .imagen-izq { 
+            width:24%; 
+            height:100%; 
+            display:inline-block; 
+            vertical-align:middle;
+
+            .imagen {
+                border-radius:90px;
+            }
+        }
+        .texto-izq { 
+            width:74%;
+            height:100%;
+            text-align:left;
+            display:inline-block;
+            vertical-align:middle;
+
+            .texto {
+                font-size:20px; 
+            }
+         }
+        .imagen-der { 
+            width:24%; 
+            height:100%; 
+            display:inline-block; 
+            vertical-align:middle;
+
+            .imagen {
+                border-radius:90px;
+            }
+        }
+        .texto-der { 
+            width:74%;
+            height:100%;
+            text-align:right;
+            display:inline-block;
+            vertical-align:middle;
+
+            .texto {
+                font-size:20px; 
+            }
+        }
+    }
+}
+
+/* Bloque 3: saldo */
+.saldos { 
+    min-width:100%; 
+    height:auto; 
+    margin:0px auto; 
+    margin-top:20px; 
+    padding:20px; 
+    float:right; 
+
+    .mensaje { 
+        color:$negroClarito; 
+        margin-bottom:20px; 
+        font-size:24px 
+    }
+    .cuadro-saldo { 
+        background:$negroClarito; 
+        color:$blancoCasiTotal; 
+        width:150px; 
+        height:auto; 
+        padding:15px; 
+        display:inline-block; 
+        vertical-align:middle;
+        margin-bottom:20px; 
+        border-radius:10px; 
+
+        .icono { 
+            width:48px; 
+            height:48px 
+        }
+        .saldo { 
+            width:70px; 
+            background:$blancoCasiTotal; 
+            color:$negroClarito; 
+            margin-top:15px; 
+            padding-top:5px;
+            padding-bottom:5px; 
+            font-size:18px; 
+            border-radius:10px 
+        }
+        .boton { 
+            background:$blancoCasiTotal; 
+            height:44px; 
+            margin-top:2px; 
+            margin-bottom:5px; 
+            cursor:pointer 
+        }
+    }
+    .mas-informacion { 
+        width:100%;
+        .boton { 
+            background:orange; 
+            color:#111111 
+        }
+    }
+    .mas-informacion:hover { color:#111111 }
+}
+
+/* Bloque 4: beta testers */
+.beta-testers { 
+    min-width:100%; 
+    height:auto; 
+    margin:0px auto; 
+    margin-top:20px; 
+    padding:20px; 
+    float:right; 
+    background:#CFCFCF;
+
+    .mensaje { 
+        color:$negroClarito; 
+        margin-bottom:20px; 
+        font-size:24px 
+    }
+
+    .imagen { 
+        border-radius:10px; 
+        margin-bottom:10px 
+    }
+}
+
+/* Bloque 5: contacto */
+.contacto { 
+    min-width:100%; height:auto; margin:0px auto; padding:20px; float:right;
+    .mensaje { color:$negroClarito; margin-bottom:20px; margin-top:20px; font-size:24px }
+    .formulario-y-flecha { display:inline-block; width:50% }
+    .arrow { cursor:pointer; opacity:0.5 }
+    .arrow:hover { opacity:1 }
+}
+
+.footer {
+    border-top:1px solid $negroClarito; margin-top:100px; width:65%; padding-top:20px; display:inline-block;
+    li { 
+        padding:0px; display:inline-block; margin-right:20px;
+        a { color:$negroClarito; font-size:13px }
+        a:hover { text-decoration:underline }
+    }
+}
+
+/* Aviso legal */
+.aviso-legal { 
+    text-align:justify; width:65%; line-height:25px; font-size:14px;
+    li { list-style: circle; padding-top:5px; padding-bottom:5px }
+    a { font-size:14px }
+}
+
+/* Registro */
+.crea-cuenta { font-size:24px; margin-bottom:30px }
+.crea-cuenta-2 { width:65%; text-align:justify; line-height:25px; margin-bottom:30px }
+
+/* Bonificaciones de saldo */
+.bonificaciones { 
+    text-align:justify; line-height:25px; width:65%; 
+    ul { margin-top:30px; margin-bottom:30px }
+    li { list-style: circle; padding-top:5px; padding-bottom:5px }
+    table { margin:0px auto }
+    td { border:1px solid $negroClarito; padding:10px }
+}
+
+/* Invitar */
+.boton-invitar { width:200px }
+.puedes-invitar { margin-bottom:35px; margin-top:10px; width:65%; font-size:24px }
+.pon-aqui { margin-bottom:10px; margin-top:10px }
